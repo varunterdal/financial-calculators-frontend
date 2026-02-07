@@ -29,23 +29,6 @@ This project uses a **basic login system for demonstration purposes only**.
 - CSS3
 - JavaScript
 
-## 📂 Project Structure
-
-interest-and-emi-calculator/
-├── index.html
-├── home.html
-├── simple-interest.html
-├── compound-interest.html
-├── emi.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── login.js
-│   ├── simple.js
-│   ├── compound.js
-│   └── emi.js
-└── README.md
-
 ## 🚀 How to Run the Project
 1. Clone or download the repository
 2. Open the project folder
