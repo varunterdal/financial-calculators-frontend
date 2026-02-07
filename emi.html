@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+      height: 100vh; margin: 0;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .box {
+      background: #fff; padding: 30px; border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center; width: 300px;
+    }
+    input { width: 90%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px; }
+    button {
+      width: 95%; padding: 10px; background: #6c5ce7;
+      border: none; color: #fff; border-radius: 5px;
+      cursor: pointer; margin-top: 10px;
+    }
+    button:hover { background: #a29bfe; color: #2d3436; }
+    a { display: block; margin-top: 10px; color: #2d3436; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>EMI Calculator</h3>
+    <input type="number" id="p" placeholder="Loan Amount (₹)">
+    <input type="number" id="r" placeholder="Rate (%) per month">
+    <input type="number" id="s" placeholder="Tenure (months)">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+    <a href="home.html">⬅ Back to Home</a>
+  </div>
+
+  <script>
+    function calculate() {
+      const p = parseFloat(document.getElementById('p').value);
+      const r = parseFloat(document.getElementById('r').value) / 100;
+      const s = parseFloat(document.getElementById('s').value);
+      const result = document.getElementById('result');
+
+      if (p < 500 || p > 10000000 || r <= 0 || s <= 0) {
+        result.textContent = "Enter valid values.";
+        result.style.color = "red";
+      } else {
+        const emi = (p * r * Math.pow(1 + r, s)) / (Math.pow(1 + r, s) - 1);
+        result.textContent = "Monthly EMI = ₹" + emi.toFixed(2);
+        result.style.color = "green";
+      }
+    }
+  </script>
+</body>
+</html>

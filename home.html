@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Student Portal</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      color: #fff;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 0 100px rgba(0,0,0,0.4);
+    }
+
+    .container {
+      width: 380px;
+      background: rgba(255,255,255,0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    a {
+      display: block;
+      width: 90%;
+      margin: 12px auto;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      transform: scale(1.03);
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+    }
+
+    button {
+      margin-top: 20px;
+      width: 60%;
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255,255,255,0.15);
+      transform: scale(1.03);
+    }
+
+    .right {
+      flex: 1.2;
+      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .text {
+      position: relative;
+      z-index: 2;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #fff;
+      padding: 30px;
+      max-width: 500px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .right { display: none; }
+      .left { flex: none; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <div class="container">
+      <h2>Welcome, <span id="user"></span></h2>
+      <a href="simple_interest.html">Simple Interest Calculator</a>
+      <a href="compound_interest.html">Compound Interest Calculator</a>
+      <a href="emi.html">EMI Calculator</a>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="overlay"></div>
+    <div class="text">
+      <h1>Smart Finance Tools for Students</h1>
+      <p>Calculate interest, manage EMIs, and understand financial basics effortlessly.</p>
+    </div>
+  </div>
+
+  <script>
+    const user = sessionStorage.getItem("username");
+    if (!user) window.location.href = "index.html";
+    document.getElementById("user").textContent = user;
+
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
